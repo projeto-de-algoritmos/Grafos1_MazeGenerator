@@ -33,9 +33,39 @@ function draw() {
     }
 
     current.visited = true
+    current.highlight()
     let next = current.checkNeighbors()
     if (next) {
         next.visited = true
+
+        removeWall(current, next)
+
         current = next
     }
+}
+
+
+function removeWall(first, second) {
+    let vertical = first.j - second.j
+    let horizontal = first.i - second.i
+
+    console.log(vertical,horizontal)
+    if (vertical === 1) {
+        // Second is the up neighbor
+        first.walls.top = false
+        second.walls.bottom = false
+    } else if (vertical === -1) {
+        // Second is the bottom neighbor
+        first.walls.bottom = false
+        second.walls.top = false
+    } else if (horizontal === 1) {
+        // Second is the left neighbor
+        first.walls.left = false
+        second.walls.right = false
+    } else if (horizontal === -1) {
+        // Second is the right neighbor
+        first.walls.right = false
+        second.walls.left = false
+    }
+
 }

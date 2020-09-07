@@ -57,6 +57,7 @@ class Spot {
         let y = this.j * w
         noFill()
         stroke(250)
+        strokeWeight(2)
         if (this.walls.top) {
             // TOP
             line(x, y, x + w, y)
@@ -75,7 +76,8 @@ class Spot {
         }
 
         if (this.visited) {
-            fill(202,200,30)
+            noStroke()
+            fill(0,0,100)
             rect(x,y,w,w)
             noFill()
         }
