@@ -22,7 +22,7 @@ class Spot {
         rect(x, y, w, w)
     }
 
-    checkNeighbors() {
+    chooseNext() {
         let neighbors = []
         let i = this.i
         let j = this.j
@@ -77,7 +77,11 @@ class Spot {
 
         if (this.visited) {
             noStroke()
-            fill(0,0,100)
+            if (stack.includes(this)) {
+                fill(0, 100, 100)
+            } else {
+                fill(0,0,100)
+            }
             rect(x,y,w,w)
             noFill()
         }

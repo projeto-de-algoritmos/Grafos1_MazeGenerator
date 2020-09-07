@@ -1,6 +1,7 @@
 let cols, rows
 let w
 let grid = []
+let stack = []
 let current
 
 function setup() {
@@ -21,6 +22,7 @@ function setup() {
     }
 
     current = grid[0][0]
+    stack.push(current)
 }
 
 function draw() {
@@ -34,13 +36,15 @@ function draw() {
 
     current.visited = true
     current.highlight()
-    let next = current.checkNeighbors()
+    let next = current.chooseNext()
     if (next) {
         next.visited = true
-
+        stack.push(next)
         removeWall(current, next)
 
         current = next
+    } else if (stack.length > 0) {
+        current = stack.pop()
     }
 }
 
@@ -49,7 +53,6 @@ function removeWall(first, second) {
     let vertical = first.j - second.j
     let horizontal = first.i - second.i
 
-    console.log(vertical,horizontal)
     if (vertical === 1) {
         // Second is the up neighbor
         first.walls.top = false
