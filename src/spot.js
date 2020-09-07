@@ -9,6 +9,9 @@ class Spot {
             left: true,
             right: true
         }
+
+        this.visited = false
+        this.neighbors = []
     }
 
     highlight() {
@@ -19,11 +22,41 @@ class Spot {
         rect(x, y, w, w)
     }
 
+    checkNeighbors() {
+        let neighbors = []
+        let i = this.i
+        let j = this.j
+
+        // top
+        if (j>0 && !grid[i][j-1].visited) {
+            neighbors.push(grid[i][j-1])
+        }
+        // right
+        if (i<cols-1 && !grid[i+1][j].visited) {
+            neighbors.push(grid[i+1][j])
+        }
+        // bottom
+        if (j<rows-1 && !grid[i][j+1].visited) {
+            neighbors.push(grid[i][j+1])
+        }
+        // left
+        if (i>0 && !grid[i-1][j].visited) {
+            neighbors.push(grid[i-1][j])
+        }
+
+        if (neighbors.length > 0) {
+            let chosen = floor(random(0, neighbors.length))
+            return neighbors[chosen] 
+        } else {
+            return undefined
+        }
+    }
+
     show(col) {
         let x = this.i * w
         let y = this.j * w
         noFill()
-        stroke(202)
+        stroke(250)
         if (this.walls.top) {
             // TOP
             line(x, y, x + w, y)
@@ -39,6 +72,12 @@ class Spot {
         if (this.walls.right) {
             // RIGHT
             line(x + w, y, x + w, y + w)
+        }
+
+        if (this.visited) {
+            fill(202,200,30)
+            rect(x,y,w,w)
+            noFill()
         }
     }
 }

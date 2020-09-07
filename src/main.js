@@ -1,6 +1,7 @@
 let cols, rows
 let w
 let grid = []
+let current
 
 function setup() {
     createCanvas(601, 601)
@@ -19,6 +20,7 @@ function setup() {
         }
     }
 
+    current = grid[0][0]
 }
 
 function draw() {
@@ -28,5 +30,12 @@ function draw() {
         for (let j in grid) {
             grid[i][j].show()
         }
+    }
+
+    current.visited = true
+    let next = current.checkNeighbors()
+    if (next) {
+        next.visited = true
+        current = next
     }
 }
