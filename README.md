@@ -12,34 +12,37 @@ Temas:
  
  (Apague essa seção)
 
-# NomedoProjeto
+# Maze generator
 
-**Número da Lista**: X<br>
-**Conteúdo da Disciplina**: XXXXXXXXXX<br>
+**Número da Lista**: 1<br>
+**Conteúdo da Disciplina**: Grafos 1<br>
 
 ## Alunos
 |Matrícula | Aluno |
 | -- | -- |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
+| 16/0007739  |  Guilherme Marques Rosa |
 | xx/xxxxxx  |  xxxx xxxx xxxxx |
 
 ## Sobre 
-Descreva os objetivos do seu projeto e como ele funciona. 
+Animação procedural mostrando uma aplicação do algoritmo de travesia DFS para a geração de labirintos de forma automática.
 
 ## Screenshots
-Adicione 3 ou mais screenshots do projeto em funcionamento.
+![maze1](./img/maze1.png)
+![maze2](./img/maze2.png)
+![final](./img/final.png)
 
 ## Instalação 
-**Linguagem**: xxxxxx<br>
-**Framework**: (caso exista)<br>
-Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
+**Linguagem**: Javascript<br>
+**Framework**: P5js<br>
+
+Basta utilizar docker compose para subir a aplicação:
+- `docker-compose build`
+- `docker-compose up`
+
+Ou utilizar algum server http para servir o diretório, por exemplo o http-serve
+
+- `http-serve -p 3000 .`
 
 ## Uso 
-Explique como usar seu projeto caso haja algum passo a passo após o comando de execução.
-
-## Outros 
-Quaisquer outras informações sobre seu projeto podem ser descritas abaixo.
-
-
-
+Basta acessar http://localhost:3000 que o projeto automaticamente começa a rodar
 
