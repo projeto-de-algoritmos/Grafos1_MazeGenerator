@@ -1,3 +1,6 @@
+/**
+ * Classe que descreve um vértice no grafo do labirinto
+ */
 class Spot {
     constructor(i, j) {
         this.i = i
@@ -27,6 +30,8 @@ class Spot {
         let i = this.i
         let j = this.j
 
+        // Criando um vetor com os vizinhos ainda não visitados
+
         // top
         if (j>0 && !grid[i][j-1].visited) {
             neighbors.push(grid[i][j-1])
@@ -44,6 +49,7 @@ class Spot {
             neighbors.push(grid[i-1][j])
         }
 
+        // Escolhendo aleatoriamente um vizinho
         if (neighbors.length > 0) {
             let chosen = floor(random(0, neighbors.length))
             return neighbors[chosen] 
@@ -58,6 +64,8 @@ class Spot {
         noFill()
         stroke(250)
         strokeWeight(2)
+
+        // Desenhando as paredes do labirinto
         if (this.walls.top) {
             // TOP
             line(x, y, x + w, y)
@@ -75,6 +83,7 @@ class Spot {
             line(x + w, y, x + w, y + w)
         }
 
+        // Diferenciando nós já visitados e nós na stack
         if (this.visited) {
             noStroke()
             if (stack.includes(this)) {
